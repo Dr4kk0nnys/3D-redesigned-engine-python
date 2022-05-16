@@ -1,0 +1,7 @@
+Package    Version
+---------- -------
+numpy      1.22.3
+pip        22.1
+pygame     2.1.2
+setuptools 62.1.0
+wheel      0.37.1
