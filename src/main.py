@@ -17,7 +17,7 @@ if __name__ == '__main__':
         [exit() for i in pg.event.get() if i.type == pg.QUIT]
 
         # TODO: FPS counter
-        pg.display.set_caption(str(clock.get_fps())[0:2])
+        pg.display.set_caption(f'{str(clock.get_fps())[0:2]} FPS')
 
         pg.display.flip()
 
