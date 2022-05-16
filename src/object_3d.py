@@ -29,9 +29,9 @@ class Object3D:
         vertexes = self.vertexes @ self.render.camera.camera_matrix()
         vertexes = vertexes @ self.render.projection.projection_matrix
         vertexes /= vertexes[:, -1].reshape(-1, 1)
-        vertexes[(vertexes > 1) | (vertexes < -1)] = 0
+        vertexes[(vertexes > 2) | (vertexes < -2)] = 0
         vertexes = vertexes @ self.render.projection.to_screen_matrix
-        vertexes = vertexes[:, -2]
+        vertexes = vertexes[:, :2]
 
         for face in self.faces:
             polygon = vertexes[face]

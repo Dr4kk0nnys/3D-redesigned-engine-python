@@ -30,7 +30,7 @@ class Render:
     def run(self):
         while True:
             self.draw()
-            # self.camera.control()
+            self.camera.control()
 
             [exit() for i in pg.event.get() if i.type == pg.QUIT]
 
