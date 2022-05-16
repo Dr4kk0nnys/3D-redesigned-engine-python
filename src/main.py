@@ -1,31 +1,48 @@
-from object_3d import *
-from camera import *
-from projection import *
 import pygame as pg
+
+from data.models.object3D import Object3D
+from data.camera.camera import *
+from data.camera.projection import *
+from data.configurations.configs import Configurations
+from data.controllers.blocks import BlocksController
+from data.structures.block import Block
 
 
 class Render:
     def __init__(self):
         pg.init()
 
-        """ TODO: Configurations """
-        self.RES = self.WIDTH, self.HEIGHT = 900, 600
-        self.H_WIDTH, self.H_HEIGHT = self.WIDTH // 2, self.HEIGHT // 2
-        self.FPS = 60
-        self.screen = pg.display.set_mode(self.RES)
-        self.clock = pg.time.Clock()
-        self.create_objects()
+        self.configs = Configurations().configs
 
-    def create_objects(self):
-        self.camera = Camera(self, [0.5, 1, -4])
+        width, height = self.configs['width'], self.configs['height']
+        self.screen = pg.display.set_mode((width, height))
+
+        self.clock = pg.time.Clock()
+
+        self.camera = Camera(self)
         self.projection = Projection(self)
-        self.object = Object3D(self)
-        self.object.translate([0.2, 0.4, 0.2])
-        self.object.rotate_y(math.pi / 6)
+
+        self.render_objects()
+
+    def render_objects(self):
+        self.objects = BlocksController.blocks
+
+        for i in range(10):
+            Block(self, [i, 1, 1])
+
+        # Block(self, [1, 1, 1])
+        # Block(self, [2, 1, 1])
+        # Block([2, 1, 1])
+
+        # self.object.rotate_y(math.pi / 6)
 
     def draw(self):
         self.screen.fill(pg.Color('darkslategray'))
-        self.object.draw()
+        # self.objects.draw()
+
+        """ TODO: Performance ? """
+        for object in self.objects:
+            object.draw()
 
     def run(self):
         while True:
@@ -39,7 +56,7 @@ class Render:
 
             pg.display.flip()
 
-            self.clock.tick(self.FPS)
+            self.clock.tick(self.configs['fps'])
 
 
 if __name__ == '__main__':

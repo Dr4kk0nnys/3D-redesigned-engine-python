@@ -1,5 +1,5 @@
-import math
 import numpy as np
+import math
 
 
 class Projection:
@@ -22,7 +22,8 @@ class Projection:
             [0, 0, m32, 0]
         ])
 
-        HW, HH = render.H_WIDTH, render.H_HEIGHT
+        half_width, half_height = render.configs['half_width'], render.configs['half_height']
+        HW, HH = half_width, half_height
         self.to_screen_matrix = np.array([
             [HW, 0, 0, 0],
             [0, -HH, 0, 0],
