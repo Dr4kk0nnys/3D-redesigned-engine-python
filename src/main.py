@@ -27,7 +27,11 @@ class Render:
     def render_objects(self):
         self.objects = BlocksController.blocks
 
-        Block([1, 1, 1])
+        for i in range(10):
+            Block(self, [i, 1, 1])
+
+        # Block(self, [1, 1, 1])
+        # Block(self, [2, 1, 1])
         # Block([2, 1, 1])
 
         # self.object.rotate_y(math.pi / 6)
