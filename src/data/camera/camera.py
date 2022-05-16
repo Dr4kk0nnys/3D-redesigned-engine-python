@@ -1,7 +1,8 @@
-import math
 import numpy as np
 import pygame as pg
-from utils import matrix_functions
+import math
+
+from data.utils import matrix_functions
 
 
 class Camera:

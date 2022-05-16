@@ -1,7 +1,9 @@
-from object_3d import *
-from camera import *
-from projection import *
 import pygame as pg
+
+from data.models.object3D import Object3D
+
+from data.camera.camera import *
+from data.camera.projection import *
 
 
 class Render:
