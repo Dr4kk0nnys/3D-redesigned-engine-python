@@ -34,15 +34,17 @@ class Object3D:
         vertexes = vertexes @ self.render.projection.to_screen_matrix
         vertexes = vertexes[:, :2]
 
+        half_width, half_height = self.render.configs['half_width'], self.render.configs['half_height']
+
         for face in self.faces:
             polygon = vertexes[face]
 
-            if not np.any((polygon == self.render.H_WIDTH) | (polygon == self.render.H_HEIGHT)):
+            if not np.any((polygon == half_width) | (polygon == half_height)):
                 pg.draw.polygon(self.render.screen,
                                 pg.Color('orange'), polygon, 3)
 
         for vertex in vertexes:
-            if not np.any((vertex == self.render.H_WIDTH) | (vertex == self.render.H_HEIGHT)):
+            if not np.any((vertex == half_width) | (vertex == half_height)):
                 pg.draw.circle(self.render.screen,
                                pg.Color('white'), vertex, 6)
 

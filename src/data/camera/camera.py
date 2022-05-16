@@ -6,16 +6,21 @@ from data.utils import matrix_functions
 
 
 class Camera:
-    def __init__(self, render, position):
+    def __init__(self, render, position=[0.5, 1, -4]):
         self.render = render
         self.position = np.array([*position, 1.0])
+
         self.forward = np.array([0, 0, 1, 1])
         self.up = np.array([0, 1, 0, 1])
         self.right = np.array([1, 0, 0, 1])
+
+        width, height = render.configs['width'], render.configs['height']
         self.h_fov = math.pi / 3
-        self.v_fov = self.h_fov * (render.HEIGHT / render.WIDTH)
+        self.v_fov = self.h_fov * (height / width)
+
         self.near_plane = 0.1
         self.far_plane = 100
+
         self.moving_speed = 0.1
         self.rotation_speed = 0.015
 
