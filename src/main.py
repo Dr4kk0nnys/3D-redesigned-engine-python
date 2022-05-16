@@ -1,11 +1,11 @@
 import pygame as pg
 
 from data.models.object3D import Object3D
-
 from data.camera.camera import *
 from data.camera.projection import *
-
 from data.configurations.configs import Configurations
+from data.controllers.blocks import BlocksController
+from data.structures.block import Block
 
 
 class Render:
@@ -19,18 +19,26 @@ class Render:
 
         self.clock = pg.time.Clock()
 
-        self.create_objects()
-
-    def create_objects(self):
         self.camera = Camera(self)
         self.projection = Projection(self)
-        self.object = Object3D(self)
-        # self.object.translate([0.2, 0.4, 0.2])
+
+        self.render_objects()
+
+    def render_objects(self):
+        self.objects = BlocksController.blocks
+
+        Block([1, 1, 1])
+        # Block([2, 1, 1])
+
         # self.object.rotate_y(math.pi / 6)
 
     def draw(self):
         self.screen.fill(pg.Color('darkslategray'))
-        self.object.draw()
+        # self.objects.draw()
+
+        """ TODO: Performance ? """
+        for object in self.objects:
+            object.draw()
 
     def run(self):
         while True:

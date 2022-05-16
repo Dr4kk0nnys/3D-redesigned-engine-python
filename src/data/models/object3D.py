@@ -5,23 +5,10 @@ from data.utils import matrix_functions
 
 
 class Object3D:
-    def __init__(self, render, vertexes='', faces=''):
+    def __init__(self, render, vertexes, faces):
         self.render = render
-
-        self.vertexes = np.array([(0, 0, 0, 1), (0, 1, 0, 1), (1, 1, 0, 1), (1, 0, 0, 1),
-                                  (0, 0, 1, 1), (0, 1, 1, 1), (1, 1, 1, 1), (1, 0, 1, 1)])
-
-        self.faces = np.array(
-            [(0, 1, 2, 3), (4, 5, 6, 7), (0, 4, 5, 1), (2, 3, 7, 6), (1, 2, 6, 5), (0, 3, 7, 4)])
-
-    #     self.vertexes = np.array([np.array(v) for v in vertexes])
-    #     self.faces = np.array([np.array(face) for face in faces])
-    #     self.translate([0.0001, 0.0001, 0.0001])
-
-    #     # self.font = pg.font.SysFont('Arial', 30, bold=True)
-    #     # self.color_faces = [(pg.Color('orange'), face) for face in self.faces]
-    #     # self.movement_flag, self.draw_vertexes = True, False
-    #     # self.label = ''
+        self.vertexes = np.array([np.array(v) for v in vertexes])
+        self.faces = np.array([np.array(face) for face in faces])
 
     def draw(self):
         self.screen_projection()
@@ -62,14 +49,3 @@ class Object3D:
 
     def rotate_z(self, angle):
         self.vertexes = self.vertexes @ matrix_functions.rotate_z(angle)
-
-
-# class Axes(Object3D):
-#     def __init__(self, render):
-#         super().__init__(render)
-#         self.vertexes = np.array([(0, 0, 0, 1), (1, 0, 0, 1), (0, 1, 0, 1), (0, 0, 1, 1)])
-#         self.faces = np.array([(0, 1), (0, 2), (0, 3)])
-#         self.colors = [pg.Color('red'), pg.Color('green'), pg.Color('blue')]
-#         self.color_faces = [(color, face) for color, face in zip(self.colors, self.faces)]
-#         self.draw_vertexes = False
-#         self.label = 'XYZ'
