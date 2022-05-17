@@ -28,7 +28,7 @@ class Render:
         self.objects = BlocksController.blocks
 
         for i in range(10):
-            Block(self, [i, 1, 1])
+            Block(self, [i, 1.5, 1])
 
         # Block(self, [1, 1, 1])
         # Block(self, [2, 1, 1])

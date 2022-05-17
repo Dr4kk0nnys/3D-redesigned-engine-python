@@ -45,10 +45,14 @@ class Camera:
             self.camera_yaw(-self.rotation_speed)
         if key[pg.K_RIGHT]:
             self.camera_yaw(self.rotation_speed)
-        if key[pg.K_UP]:
-            self.camera_pitch(-self.rotation_speed)
+        # if key[pg.K_UP]:
+        #     self.camera_pitch(-self.rotation_speed)
         if key[pg.K_DOWN]:
             self.camera_pitch(self.rotation_speed)
+
+        if key[pg.K_UP]:
+            self.look_up(-self.rotation_speed)
+            # self.camera_pitch(-self.rotation_speed)
 
     def camera_yaw(self, angle):
         rotate = matrix_functions.rotate_y(angle)
@@ -57,6 +61,12 @@ class Camera:
         self.up = self.up @ rotate
 
     def camera_pitch(self, angle):
+        rotate = matrix_functions.rotate_x(angle)
+        self.forward = self.forward @ rotate
+        self.right = self.right @ rotate
+        self.up = self.up @ rotate
+
+    def look_up(self, angle):
         rotate = matrix_functions.rotate_x(angle)
         self.forward = self.forward @ rotate
         self.right = self.right @ rotate
