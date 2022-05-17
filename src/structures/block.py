@@ -1,7 +1,7 @@
 import numpy as np
 
-from data.models.object3D import Object3D
-from data.controllers.blocks import BlocksController
+from models.object3D import Object3D
+from controllers.blocks import BlocksController
 
 
 class Block:

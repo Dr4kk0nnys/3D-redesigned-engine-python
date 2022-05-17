@@ -1,11 +1,11 @@
 import pygame as pg
 
-from data.models.object3D import Object3D
-from data.camera.camera import *
-from data.camera.projection import *
-from data.configurations.configs import Configurations
-from data.controllers.blocks import BlocksController
-from data.structures.block import Block
+from models.object3D import Object3D
+from camera.camera import *
+from camera.projection import *
+from configurations.configs import Configurations
+from controllers.blocks import BlocksController
+from structures.block import Block
 
 
 class Render:
@@ -28,7 +28,7 @@ class Render:
         self.objects = BlocksController.blocks
 
         for i in range(10):
-            Block(self, [i, 1, 1])
+            Block(self, [i, 1.5, 1])
 
         # Block(self, [1, 1, 1])
         # Block(self, [2, 1, 1])
