@@ -2,7 +2,7 @@ import numpy as np
 import pygame as pg
 import math
 
-from data.utils import matrix_functions
+from utils import matrix_functions
 
 
 class Camera:

@@ -1,7 +1,7 @@
 import numpy as np
 import pygame as pg
 
-from data.utils import matrix_functions
+from utils import matrix_functions
 
 
 class Object3D:
